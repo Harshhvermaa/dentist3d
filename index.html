@@ -1,0 +1,567 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='.9em' font-size='90'%3E%F0%9F%A6%B7%3C/text%3E%3C/svg%3E" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="Srivastava Multispeciality Dental Clinic (SMDC), Agra — led by Dr. Punit Srivastava (MDS). World-class dental treatment at affordable rates." />
+    <title>SMDC — Srivastava Multispeciality Dental Clinic, Agra</title>
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,300..800&family=Inter:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+
+    <!-- Load styles render-blocking (before JS) so there's no flash of unstyled content -->
+    <link rel="stylesheet" href="/src/style.css" />
+  </head>
+  <body data-page="home">
+    <!-- Scroll progress bar -->
+    <div class="progress" aria-hidden="true"><span class="progress__fill" id="progressFill"></span></div>
+
+    <!-- Fixed full-screen 3D canvas behind everything -->
+    <canvas id="tooth-canvas" aria-hidden="true"></canvas>
+
+    <!-- shared nav (injected by layout.js) -->
+    <div id="site-nav"></div>
+
+    <main id="top">
+      <!-- ============ SCENE 1 — HERO ============ -->
+      <section class="scene scene--hero" id="hero">
+        <div class="scene__content hero__content">
+          <p class="eyebrow">YOUR FRIENDLY NEIGHBOURHOOD DENTIST</p>
+          <h1 class="display">
+            Expert dental care that <br>puts your smile first.
+          </h1>
+          <p class="lede">
+            Led by Dr. Punit Srivastava (MDS), SMDC combines modern technology with
+            compassionate care to deliver exceptional dental experiences for every patient.
+          </p>
+          <div class="hero__actions">
+            <a href="#contact" class="btn btn--pill btn--primary">Book a Visit</a>
+            <a href="#meet" class="btn btn--pill btn--ghost">Meet Dr. Punit</a>
+          </div>
+        </div>
+      </section>
+
+      <!-- ============ SCENE 2 — IMAGING ============ -->
+      <section class="scene scene--imaging" id="imaging">
+        <div class="scene__content imaging__content">
+          <p class="eyebrow">3D DIGITAL DENTISTRY · ADVANCED DIAGNOSTICS</p>
+          <h2 class="display display--md">Every detail, <br>perfectly captured.</h2>
+          <p class="lede">
+            Using state-of-the-art intraoral scanners, we create highly accurate digital
+            impressions in minutes — ensuring precise diagnoses, comfortable treatments, and
+            better results without messy molds.
+          </p>
+          <div class="stats">
+            <div class="stat">
+              <span class="stat__num">0.05<span class="stat__unit">mm</span></span>
+              <span class="stat__label">Scan Accuracy</span>
+            </div>
+            <div class="stat">
+              <span class="stat__num">60<span class="stat__unit">sec</span></span>
+              <span class="stat__label">Full Arch Scan</span>
+            </div>
+            <div class="stat">
+              <span class="stat__num">100<span class="stat__unit">%</span></span>
+              <span class="stat__label">Digital Workflow</span>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ============ SCENE 3 — CROSS-SECTION ============ -->
+      <section class="scene scene--cross" id="cross">
+        <div class="scene__content cross__content">
+          <p class="eyebrow">PERSONALISED CARE · LASTING RESULTS</p>
+          <h2 class="display display--md">Dentistry designed <br>around you.</h2>
+          <p class="lede">
+            From routine check-ups to advanced restorative treatments, every procedure is
+            planned with precision and tailored to your unique smile.
+          </p>
+          <div class="stats">
+            <div class="stat">
+              <span class="stat__num">5000<span class="stat__unit">+</span></span>
+              <span class="stat__label">Happy Patients</span>
+            </div>
+            <div class="stat">
+              <span class="stat__num">15+<span class="stat__unit">yrs</span></span>
+              <span class="stat__label">Clinical Excellence</span>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ============ MEET DR. PUNIT ============ -->
+      <section class="section meet" id="meet">
+        <div class="wrap">
+          <header class="meet-head reveal">
+            <p class="eyebrow">MEET YOUR DENTIST</p>
+            <h2 class="display display--md">Dr. Punit <em>Srivastava</em></h2>
+            <!-- <p class="meet-sub">MDS · Conservative Dentistry &amp; Endodontics</p> -->
+          </header>
+
+          <!-- Interactive parallax stage — move the mouse to tilt the scene.
+               Photo + each chip sit on their own depth (data-depth). -->
+          <div class="meet-stage" id="meetStage">
+            <span class="meet-halo" aria-hidden="true"></span>
+            <span class="meet-halo meet-halo--2" aria-hidden="true"></span>
+            <span class="meet-glow" aria-hidden="true"></span>
+            <span class="meet-bgword" aria-hidden="true">PUNIT<br />SRIVASTAVA</span>
+
+            <div class="meet-scene" id="meetScene">
+              <div class="meet-photo" data-depth="0.16">
+                <img
+                  class="meet-photo__img"
+                  src="/punit.png"
+                  alt="Dr. Punit Srivastava in blue scrubs"
+                  onerror="this.style.visibility='hidden'"
+                />
+              </div>
+
+              <div class="meet-chips">
+                <div class="meet-chip meet-chip--tl" data-depth="0.95" style="--i: 1; --dur: 5.6s; --fdelay: 0s">
+                  <span class="meet-chip__in"><span class="meet-chip__float">
+                    <span class="meet-chip__icon">🦷</span>
+                    <span class="meet-chip__text"><b class="count" data-to="2000">0</b>+ Teeth Recovered</span>
+                  </span></span>
+                </div>
+                <div class="meet-chip meet-chip--tr" data-depth="0.6" style="--i: 2; --dur: 6.4s; --fdelay: 0.4s">
+                  <span class="meet-chip__in"><span class="meet-chip__float">
+                    <span class="meet-chip__icon">🎓</span>
+                    <span class="meet-chip__text">MDS — Master of Dental Surgery</span>
+                  </span></span>
+                </div>
+                <div class="meet-chip meet-chip--ml" data-depth="1.15" style="--i: 3; --dur: 6s; --fdelay: 0.9s">
+                  <span class="meet-chip__in"><span class="meet-chip__float">
+                    <span class="meet-chip__icon">💪</span>
+                    <span class="meet-chip__text">Gym Freak — Strong, steady hands</span>
+                  </span></span>
+                </div>
+                <div class="meet-chip meet-chip--mr" data-depth="0.72" style="--i: 4; --dur: 7s; --fdelay: 0.2s">
+                  <span class="meet-chip__in"><span class="meet-chip__float">
+                    <span class="meet-chip__icon">🏠</span>
+                    <span class="meet-chip__text">Your Friendly Neighbourhood Dentist</span>
+                  </span></span>
+                </div>
+                <div class="meet-chip meet-chip--bl" data-depth="0.85" style="--i: 5; --dur: 5.9s; --fdelay: 0.7s">
+                  <span class="meet-chip__in"><span class="meet-chip__float">
+                    <span class="meet-chip__icon">🔬</span>
+                    <span class="meet-chip__text">Endodontics Specialist</span>
+                  </span></span>
+                </div>
+                <div class="meet-chip meet-chip--br" data-depth="1.05" style="--i: 6; --dur: 6.7s; --fdelay: 0.3s">
+                  <span class="meet-chip__in"><span class="meet-chip__float">
+                    <span class="meet-chip__icon">❤️</span>
+                    <span class="meet-chip__text">Painless &amp; Patient-first Care</span>
+                  </span></span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ============ HOW DR. PUNIT WORKS ============ -->
+      <section class="section works" id="works">
+        <div class="wrap">
+          <!-- divider line below the photo, splitting the two sections -->
+          <!-- <div class="works-divider" aria-hidden="true"></div> -->
+
+          <header class="section__head reveal">
+            <!-- <p class="eyebrow">THE PROCESS · HONEST DENTISTRY</p> -->
+            <h2 class="display display--md">How Dr. Punit <em>works.</em></h2>
+            <p class="lede lede--center">
+              The same 4 steps for every patient. No hidden treatments, no unnecessary
+              procedures — just honest dentistry.
+            </p>
+          </header>
+
+          <ol class="steps">
+            <li class="step reveal" style="--i: 1">
+              <div class="step__marker"><span class="step__num">01</span></div>
+              <div class="step__card">
+                <span class="step__icon">👂</span>
+                <h3 class="step__title">Listen First</h3>
+                <p class="step__tag">Pehle aapki baat, phir hamari.</p>
+                <p class="step__desc">
+                  Every visit starts with a conversation, not a chair. We understand your
+                  concerns, your fears, and your history before touching a single instrument.
+                </p>
+              </div>
+            </li>
+
+            <li class="step reveal" style="--i: 2">
+              <div class="step__marker"><span class="step__num">02</span></div>
+              <div class="step__card">
+                <span class="step__icon">🔬</span>
+                <h3 class="step__title">Scan &amp; Diagnose</h3>
+                <p class="step__tag">Andaza nahi, evidence.</p>
+                <p class="step__desc">
+                  3D intraoral scans and digital X-rays show us exactly what's happening —
+                  and we show it all to you on screen, in real time.
+                </p>
+              </div>
+            </li>
+
+            <li class="step reveal" style="--i: 3">
+              <div class="step__marker"><span class="step__num">03</span></div>
+              <div class="step__card">
+                <span class="step__icon">💬</span>
+                <h3 class="step__title">Explain Honestly</h3>
+                <p class="step__tag">Jo zaroori hai wahi bolenge.</p>
+                <p class="step__desc">
+                  You see what we see. Every option, every cost, every alternative — explained
+                  in simple words. If you don't need a treatment, we'll tell you that too.
+                </p>
+              </div>
+            </li>
+
+            <li class="step reveal" style="--i: 4">
+              <div class="step__marker"><span class="step__num">04</span></div>
+              <div class="step__card">
+                <span class="step__icon">🤍</span>
+                <h3 class="step__title">Treat Gently</h3>
+                <p class="step__tag">Painless, patient-paced care.</p>
+                <p class="step__desc">
+                  Modern anesthesia, gentle techniques, and zero rush. You control the pace —
+                  we just make sure you leave smiling.
+                </p>
+              </div>
+            </li>
+          </ol>
+        </div>
+      </section>
+
+      <!-- ============ SERVICES ============ -->
+      <section class="section services" id="services">
+        <div class="wrap">
+          <header class="section__head reveal">
+            <p class="eyebrow">WHAT WE DO</p>
+            <h2 class="display display--md">Complete care, <em>one roof.</em></h2>
+            <p class="lede lede--center">
+              A full spectrum of treatments delivered with the same calm precision — from
+              your six-month check-up to a full smile transformation.
+            </p>
+          </header>
+
+          <div class="svc-grid">
+            <article class="svc-card reveal" style="--i: 1" tabindex="0">
+              <div class="svc-card__head">
+                <span class="svc-icon">🪥</span>
+                <span class="svc-num">01</span>
+              </div>
+              <h3 class="svc-card__title">General &amp; Preventive</h3>
+              <p class="svc-card__desc">Check-ups, cleanings, sealants and fluoride to keep problems from starting.</p>
+              <div class="svc-card__foot">
+                <span class="svc-price">From ₹800</span>
+                <span class="svc-arrow" aria-hidden="true">→</span>
+              </div>
+            </article>
+
+            <article class="svc-card reveal" style="--i: 2" tabindex="0">
+              <div class="svc-card__head">
+                <span class="svc-icon">✨</span>
+                <span class="svc-num">02</span>
+              </div>
+              <h3 class="svc-card__title">Cosmetic &amp; Whitening</h3>
+              <p class="svc-card__desc">Professional whitening and veneers for a brighter, natural-looking smile.</p>
+              <div class="svc-card__foot">
+                <span class="svc-price">From ₹4,500</span>
+                <span class="svc-arrow" aria-hidden="true">→</span>
+              </div>
+            </article>
+
+            <article class="svc-card reveal" style="--i: 3" tabindex="0">
+              <div class="svc-card__head">
+                <span class="svc-icon">👑</span>
+                <span class="svc-num">03</span>
+              </div>
+              <h3 class="svc-card__title">Implants &amp; Restorative</h3>
+              <p class="svc-card__desc">Crowns, bridges and titanium implants that restore full function and bite.</p>
+              <div class="svc-card__foot">
+                <span class="svc-price">From ₹18,000</span>
+                <span class="svc-arrow" aria-hidden="true">→</span>
+              </div>
+            </article>
+
+            <article class="svc-card reveal" style="--i: 4" tabindex="0">
+              <div class="svc-card__head">
+                <span class="svc-icon">📐</span>
+                <span class="svc-num">04</span>
+              </div>
+              <h3 class="svc-card__title">Orthodontics</h3>
+              <p class="svc-card__desc">Clear aligners and braces tailored to gently guide teeth into place.</p>
+              <div class="svc-card__foot">
+                <span class="svc-price">From ₹35,000</span>
+                <span class="svc-arrow" aria-hidden="true">→</span>
+              </div>
+            </article>
+
+            <article class="svc-card reveal" style="--i: 5" tabindex="0">
+              <div class="svc-card__head">
+                <span class="svc-icon">🚑</span>
+                <span class="svc-num">05</span>
+              </div>
+              <h3 class="svc-card__title">Emergency Care</h3>
+              <p class="svc-card__desc">Same-day relief for pain, breaks and swelling — walk-ins welcome.</p>
+              <div class="svc-card__foot">
+                <span class="svc-price">From ₹600</span>
+                <span class="svc-arrow" aria-hidden="true">→</span>
+              </div>
+            </article>
+
+            <article class="svc-card reveal" style="--i: 6" tabindex="0">
+              <div class="svc-card__head">
+                <span class="svc-icon">🧸</span>
+                <span class="svc-num">06</span>
+              </div>
+              <h3 class="svc-card__title">Pediatric</h3>
+              <p class="svc-card__desc">Friendly, fear-free dentistry that builds healthy habits for little smiles.</p>
+              <div class="svc-card__foot">
+                <span class="svc-price">From ₹500</span>
+                <span class="svc-arrow" aria-hidden="true">→</span>
+              </div>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <!-- ============ TESTIMONIALS ============ -->
+      <section class="section testi" id="testimonials">
+        <div class="wrap">
+          <header class="section__head reveal">
+            <p class="eyebrow">TESTIMONIALS</p>
+            <h2 class="display display--md">What <em>Agra</em> says about us.</h2>
+            <p class="lede lede--center">
+              Real patients, real smiles — from every corner of the city.
+            </p>
+          </header>
+
+          <div class="testi-slider reveal">
+            <div class="testi-track" id="testiTrack">
+              <figure class="testi-card">
+                <div class="testi-stars" aria-label="5 out of 5 stars">★★★★★</div>
+                <blockquote class="testi-quote">
+                  Bilkul painless root canal — I was terrified, but Dr. Punit explained every
+                  single step. Easily the best dental experience I've had in Agra.
+                </blockquote>
+                <figcaption class="testi-by">
+                  <span class="testi-avatar">RA</span>
+                  <span class="testi-meta">
+                    <span class="testi-name">Ritu Agarwal</span>
+                    <span class="testi-sub">Kamla Nagar · Root Canal</span>
+                  </span>
+                </figcaption>
+              </figure>
+
+              <figure class="testi-card">
+                <div class="testi-stars" aria-label="5 out of 5 stars">★★★★★</div>
+                <blockquote class="testi-quote">
+                  Got my daughter's braces done here. The team is so patient with kids, and the
+                  pricing was honest — zero upselling. Highly recommend.
+                </blockquote>
+                <figcaption class="testi-by">
+                  <span class="testi-avatar">SC</span>
+                  <span class="testi-meta">
+                    <span class="testi-name">Sunil Chauhan</span>
+                    <span class="testi-sub">Dayalbagh · Orthodontics</span>
+                  </span>
+                </figcaption>
+              </figure>
+
+              <figure class="testi-card">
+                <div class="testi-stars" aria-label="5 out of 5 stars">★★★★★</div>
+                <blockquote class="testi-quote">
+                  The 3D scan showed me exactly what was wrong. Same-day crown, no second visit,
+                  no pain. Worth every rupee — I've already sent my whole family.
+                </blockquote>
+                <figcaption class="testi-by">
+                  <span class="testi-avatar">MV</span>
+                  <span class="testi-meta">
+                    <span class="testi-name">Meena Verma</span>
+                    <span class="testi-sub">Sikandra · Crown</span>
+                  </span>
+                </figcaption>
+              </figure>
+
+              <figure class="testi-card">
+                <div class="testi-stars" aria-label="5 out of 5 stars">★★★★★</div>
+                <blockquote class="testi-quote">
+                  My kids used to cry before every dental visit. Now they ask when we're going
+                  back! The pediatric team here is honestly magic.
+                </blockquote>
+                <figcaption class="testi-by">
+                  <span class="testi-avatar">FK</span>
+                  <span class="testi-meta">
+                    <span class="testi-name">Farah Khan</span>
+                    <span class="testi-sub">Loha Mandi · Pediatric</span>
+                  </span>
+                </figcaption>
+              </figure>
+
+              <figure class="testi-card">
+                <div class="testi-stars" aria-label="5 out of 5 stars">★★★★★</div>
+                <blockquote class="testi-quote">
+                  Cracked a tooth on a Sunday and they saw me within the hour. Calm, quick, and
+                  no gouging on the bill. Lifesavers.
+                </blockquote>
+                <figcaption class="testi-by">
+                  <span class="testi-avatar">DS</span>
+                  <span class="testi-meta">
+                    <span class="testi-name">Deepak Sharma</span>
+                    <span class="testi-sub">Shahganj · Emergency Care</span>
+                  </span>
+                </figcaption>
+              </figure>
+
+              <figure class="testi-card">
+                <div class="testi-stars" aria-label="5 out of 5 stars">★★★★★</div>
+                <blockquote class="testi-quote">
+                  Whitening that actually looks natural — my wedding photos came out perfect.
+                  Gentle, professional, and never once rushed.
+                </blockquote>
+                <figcaption class="testi-by">
+                  <span class="testi-avatar">AM</span>
+                  <span class="testi-meta">
+                    <span class="testi-name">Anjali Mittal</span>
+                    <span class="testi-sub">Civil Lines · Whitening</span>
+                  </span>
+                </figcaption>
+              </figure>
+
+              <figure class="testi-card">
+                <div class="testi-stars" aria-label="5 out of 5 stars">★★★★★</div>
+                <blockquote class="testi-quote">
+                  Been coming here for six years now. They remember my name, my history,
+                  everything. It genuinely feels like family.
+                </blockquote>
+                <figcaption class="testi-by">
+                  <span class="testi-avatar">RB</span>
+                  <span class="testi-meta">
+                    <span class="testi-name">Rakesh Bansal</span>
+                    <span class="testi-sub">Balkeshwar · General Care</span>
+                  </span>
+                </figcaption>
+              </figure>
+            </div>
+
+            <div class="testi-ctrls">
+              <button class="testi-arrow" id="testiPrev" type="button" aria-label="Previous reviews">‹</button>
+              <div class="testi-dots" id="testiDots"></div>
+              <button class="testi-arrow" id="testiNext" type="button" aria-label="Next reviews">›</button>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ============ FAQ ============ -->
+      <section class="section faq" id="faq">
+        <div class="wrap faq__wrap">
+          <header class="section__head faq__head reveal">
+            <p class="eyebrow">NO SILLY QUESTIONS</p>
+            <h2 class="display display--md">Everything you're <em>afraid to ask.</em></h2>
+            <p class="lede">
+              The stuff people whisper about dentists — answered honestly, no sugar-coating.
+            </p>
+          </header>
+
+          <div class="faq-list reveal" style="--i: 1">
+            <details class="faq-item">
+              <summary class="faq-q">
+                Will it hurt?
+                <span class="faq-ic" aria-hidden="true"></span>
+              </summary>
+              <div class="faq-a">
+                We use modern anesthesia and go entirely at your pace. Most patients say the
+                tiny numbing pinch is the worst part — and you can raise your hand to pause
+                anytime.
+              </div>
+            </details>
+
+            <details class="faq-item">
+              <summary class="faq-q">
+                How much will it cost — really?
+                <span class="faq-ic" aria-hidden="true"></span>
+              </summary>
+              <div class="faq-a">
+                You get the full cost upfront, in writing, before anything begins. No surprise
+                bills and no "while we're in there" add-ons.
+              </div>
+            </details>
+
+            <details class="faq-item">
+              <summary class="faq-q">
+                What if I haven't seen a dentist in years?
+                <span class="faq-ic" aria-hidden="true"></span>
+              </summary>
+              <div class="faq-a">
+                No lectures and no judgement. We meet you exactly where you are and build a
+                plan you're comfortable with — one step at a time.
+              </div>
+            </details>
+
+            <details class="faq-item">
+              <summary class="faq-q">
+                Do I actually need this treatment?
+                <span class="faq-ic" aria-hidden="true"></span>
+              </summary>
+              <div class="faq-a">
+                If you don't, we'll tell you so. We'd rather keep you as a patient for life
+                than sell you something you don't need today.
+              </div>
+            </details>
+
+            <details class="faq-item">
+              <summary class="faq-q">
+                I'm really anxious. Can you help?
+                <span class="faq-ic" aria-hidden="true"></span>
+              </summary>
+              <div class="faq-a">
+                Absolutely — just tell us when you book. We'll give you extra time, explain
+                every step, and never, ever rush you.
+              </div>
+            </details>
+
+            <details class="faq-item">
+              <summary class="faq-q">
+                Will I be kept waiting?
+                <span class="faq-ic" aria-hidden="true"></span>
+              </summary>
+              <div class="faq-a">
+                We run on time. Book a slot and you'll be seen close to it — not an hour later
+                in a crowded waiting room.
+              </div>
+            </details>
+          </div>
+        </div>
+      </section>
+
+      <!-- ============ CTA BAND ============ -->
+      <section class="section cta-band-wrap">
+        <div class="wrap">
+          <div class="cta-band reveal">
+            <span class="cta-orb cta-orb--1" aria-hidden="true"></span>
+            <span class="cta-orb cta-orb--2" aria-hidden="true"></span>
+            <p class="eyebrow cta-band__eyebrow">READY WHEN YOU ARE</p>
+            <h2 class="display display--md cta-band__title">
+              Your best smile starts with a <em>single visit.</em>
+            </h2>
+            <p class="cta-band__sub">Book online in under a minute — we'll handle the rest.</p>
+            <a href="contact.html" class="btn btn--pill btn--light">Book an appointment</a>
+          </div>
+        </div>
+      </section>
+
+    </main>
+
+    <!-- shared footer (injected by layout.js) -->
+    <div id="site-footer"></div>
+
+    <script type="module" src="/src/main.js"></script>
+  </body>
+</html>

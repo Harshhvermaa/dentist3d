@@ -1,0 +1,116 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='.9em' font-size='90'%3E%F0%9F%A6%B7%3C/text%3E%3C/svg%3E" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="Contact Srivastava Multispeciality Dental Clinic (SMDC) in Agra — book an appointment, find our phone, hours and clinic timings." />
+    <title>Contact Us — SMDC Dental Clinic, Agra</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,300..800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="/src/style.css" />
+  </head>
+  <body data-page="contact">
+    <div id="site-nav"></div>
+
+    <main>
+      <header class="page-hero reveal">
+        <div class="page-hero__inner">
+          <p class="eyebrow">GET IN TOUCH</p>
+          <h1 class="display">Come say <em>hello.</em></h1>
+          <p class="lede">
+            Find us in the heart of Agra. Walk in for a consult, or send the form and we'll
+            call you back the same day.
+          </p>
+        </div>
+      </header>
+
+      <section class="section">
+        <div class="wrap contact__grid">
+          <div class="contact__info reveal">
+            <ul class="info-list">
+              <li>
+                <span class="info-list__ic" aria-hidden="true">📍</span>
+                <span class="info-list__body">
+                  <span class="info-list__k">Clinic</span>
+                  <span class="info-list__v">Srivastava Multispeciality Dental Clinic (SMDC),<br />Agra, Uttar Pradesh</span>
+                </span>
+              </li>
+              <li>
+                <span class="info-list__ic" aria-hidden="true">📞</span>
+                <span class="info-list__body">
+                  <span class="info-list__k">Call for appointment</span>
+                  <span class="info-list__v">
+                    <a href="tel:+915622526465">0562-2526465</a> ·
+                    <a href="tel:+915622527375">0562-2527375</a><br />
+                    Justdial: <a href="tel:08888888888">088888 88888</a>
+                  </span>
+                </span>
+              </li>
+              <li>
+                <span class="info-list__ic" aria-hidden="true">✉️</span>
+                <span class="info-list__body">
+                  <span class="info-list__k">Email</span>
+                  <span class="info-list__v"><a href="mailto:info@srivastavadental.in">info@srivastavadental.in</a></span>
+                </span>
+              </li>
+              <li>
+                <span class="info-list__ic" aria-hidden="true">🕑</span>
+                <span class="info-list__body">
+                  <span class="info-list__k">Timings</span>
+                  <span class="info-list__v">
+                    Mon–Sat · 10:00 AM – 2:00 PM &amp; 5:00 PM – 9:00 PM<br />
+                    Friday · Evening only, 5:00 PM – 9:00 PM<br />
+                    Sunday · 11:00 AM – 4:00 PM
+                  </span>
+                </span>
+              </li>
+            </ul>
+          </div>
+
+          <div class="contact__form-wrap reveal" style="--i: 1">
+            <form class="form" id="appointmentForm" novalidate>
+              <h3 class="form__title">Request an appointment</h3>
+
+              <div class="field">
+                <label for="name">Full name</label>
+                <input type="text" id="name" name="name" placeholder="Priya Sharma" required />
+              </div>
+
+              <div class="field">
+                <label for="phone">Phone</label>
+                <input type="tel" id="phone" name="phone" placeholder="+91 98765 43210" required />
+              </div>
+
+              <div class="field">
+                <label for="service">Service</label>
+                <select id="service" name="service" required>
+                  <option value="" disabled selected>Choose a service…</option>
+                  <option>General &amp; Preventive</option>
+                  <option>Cosmetic &amp; Whitening</option>
+                  <option>Implants &amp; Restorative</option>
+                  <option>Orthodontics</option>
+                  <option>Emergency Care</option>
+                  <option>Pediatric</option>
+                </select>
+              </div>
+
+              <div class="field">
+                <label for="message">Message</label>
+                <textarea id="message" name="message" rows="3" placeholder="Tell us what you need…"></textarea>
+              </div>
+
+              <button type="submit" class="btn btn--pill btn--primary btn--full">Send request</button>
+              <p class="form__note" id="formNote" role="status" aria-live="polite"></p>
+            </form>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <div id="site-footer"></div>
+    <script type="module" src="/src/contact.js"></script>
+  </body>
+</html>
