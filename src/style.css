@@ -33,6 +33,16 @@
   --shadow-lg: 0 40px 80px -30px rgba(24, 36, 32, 0.4);
 }
 
+/* hero picture stands in for the 3D tooth on phones only */
+.hero__photo {
+  display: none;
+}
+
+/* a line break that only applies on small screens (see the 900px block) */
+.brk-mob {
+  display: none;
+}
+
 /* ---------- reset-ish ---------- */
 *,
 *::before,
@@ -850,10 +860,13 @@ img {
   }
 }
 
-/* phones + reduced motion: no pinning, just swipe the track */
+/* phones: one card at a time, centred, still pinned */
 @media (max-width: 720px) {
   .timeline {
     --tl-per: 1;
+  }
+  .timeline.is-pinned .tl-item {
+    min-height: 190px;
   }
 }
 .timeline:not(.is-pinned) .tl-track {
@@ -1485,6 +1498,9 @@ img {
   .meet-scene {
     display: block;
     min-height: 0;
+    /* plates are stacked here, so the vw formula is no longer needed — and it
+       disagreed with the 22px gutter the sections actually use */
+    --photo-w: 100%;
   }
   .meet-photo {
     margin: 0 auto; /* scene is no longer a flex row, so centre it here */
@@ -1499,7 +1515,7 @@ img {
     display: grid;
     grid-template-columns: 1fr 1fr;
     gap: 10px;
-    width: min(560px, 100%);
+    width: 100%;
     margin: 18px auto 0;
   }
   .meet-tag {
@@ -2523,6 +2539,17 @@ img {
     margin-left: auto;
     margin-right: auto;
   }
+  /* The ch-based caps left body copy visibly narrower than every block around
+     it. At these widths the full container is still only ~48 characters a
+     line, so drop them and let text share the site's one gutter. */
+  .lede,
+  .lede--center,
+  .hero__content .lede,
+  .imaging__content .lede,
+  .cross__content .lede,
+  .about-hero__copy .lede {
+    max-width: none;
+  }
   .stats,
   .imaging__content .stats,
   .hero__actions,
@@ -2572,6 +2599,84 @@ img {
   .display br,
   .display--md br {
     display: none;
+  }
+  /* ...except breaks we deliberately want on small screens */
+  .display br.brk-mob,
+  .display--md br.brk-mob {
+    display: inline;
+  }
+}
+
+/* ---- phones: no 3D, so the hero shows the doctors and scenes 2+3 tighten
+       into one continuous stat band instead of two tall screens ---- */
+@media (max-width: 767px) {
+  /* the canvas is never booted on phones (see main.js) — make sure it also
+     takes up no space if it is left in the DOM */
+  #tooth-canvas {
+    display: none !important;
+  }
+
+  .hero__photo {
+    display: block;
+    width: 100%; /* same edges as the buttons below it */
+    margin: 26px auto 18px;
+    border-radius: 24px;
+    overflow: hidden;
+    background: linear-gradient(160deg, #eaf1fc 0%, #d4e2f6 58%, #c7d9f1 100%);
+    border: 1px solid var(--glass-border);
+    box-shadow: 0 26px 50px -26px rgba(35, 80, 158, 0.45);
+  }
+  .hero__photo img {
+    width: 100%;
+    height: auto;
+    display: block;
+  }
+
+  /* hero can breathe now that it holds a picture */
+  .scene--hero {
+    padding-top: 118px;
+    padding-bottom: 40px;
+  }
+
+  /* scenes 2 + 3 read as one band rather than two full screens */
+  .scene--imaging {
+    padding-top: 54px;
+    padding-bottom: 26px;
+  }
+  .scene--cross {
+    padding-top: 26px;
+    padding-bottom: 64px;
+  }
+  /* the second eyebrow/lede is filler once the two sit together */
+  .scene--cross .eyebrow,
+  .scene--cross .lede {
+    display: none;
+  }
+  .scene--imaging .lede {
+    margin-bottom: 4px;
+  }
+
+  /* stats → compact two-up tiles */
+  .stats {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 12px;
+    width: 100%;
+  }
+  .stat {
+    padding: 16px 14px;
+    border-radius: 18px;
+    background: var(--glass-strong);
+    border: 1px solid var(--glass-border);
+    box-shadow: var(--shadow-sm);
+    text-align: center;
+  }
+  .stat__num {
+    font-size: 1.6rem;
+  }
+  /* an odd last tile would sit alone in the left column — let it span */
+  .stats > .stat:last-child:nth-child(odd) {
+    grid-column: 1 / -1;
   }
 }
 
@@ -2623,9 +2728,9 @@ img {
   .meet-tags {
     position: static;
     display: grid;
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: 1fr; /* each doctor on their own line */
     gap: 8px;
-    width: min(340px, 100%);
+    width: 100%;
     margin: 14px auto 0;
   }
   .meet-tag {
@@ -2660,7 +2765,7 @@ img {
     display: flex;
     flex-direction: column;
     gap: 10px;
-    width: min(340px, 100%);
+    width: 100%;
     margin: 22px auto 0;
     pointer-events: auto;
   }
@@ -2689,6 +2794,14 @@ img {
   .meet-chip__icon {
     width: 34px;
     height: 34px;
+  }
+  /* the stacked rows read better ranged left than centred */
+  .meet-chip__text {
+    text-align: left;
+  }
+  /* four is enough on a phone — the last two are the least load-bearing */
+  .meet-chip:nth-child(n + 5) {
+    display: none;
   }
 }
 

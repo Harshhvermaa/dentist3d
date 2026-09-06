@@ -92,10 +92,9 @@ if (journey && jTrack && jFill) {
   let overflow = 0; // how far the track has to travel, in px
   let ticking = false;
 
-  // Below ~1025px only two cards fit, which makes the pin ~2,200px long —
-  // more scroll than the section is worth. Swipe instead down there.
-  const canPin = () =>
-    !reduced && window.matchMedia('(min-width: 1025px)').matches;
+  // Pin at every width — phones included — so the five steps always pass
+  // horizontally before the page moves on. Only reduced motion opts out.
+  const canPin = () => !reduced;
 
   function measure() {
     if (!canPin()) {

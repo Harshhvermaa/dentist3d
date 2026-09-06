@@ -4,20 +4,31 @@
 // NOTE: style.css is loaded via a <link> in index.html (render-blocking) so the
 // page is styled instantly instead of waiting for this JS bundle (Three.js) to load.
 import './layout.js'; // injects the shared nav + footer (and wires nav border)
-import { createToothScene } from './tooth.js';
 import { initTestiSlider } from './slider.js';
 
 const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
-/* ---------- boot the 3D tooth ---------- */
+/* ---------- boot the 3D tooth (desktop only) ----------
+   Phones get the photo hero instead, so the import is dynamic and width-gated:
+   Three.js (~594 KB) and the 3 MB model are never fetched on mobile at all. */
 const canvas = document.getElementById('tooth-canvas');
 let toothScene = null;
-try {
-  toothScene = createToothScene(canvas, { reducedMotion });
-} catch (err) {
-  // If WebGL is unavailable, hide the canvas gracefully — content still works.
-  console.warn('3D tooth disabled:', err);
-  canvas.style.display = 'none';
+
+if (canvas) {
+  if (window.matchMedia('(min-width: 768px)').matches) {
+    import('./tooth.js')
+      .then(({ createToothScene }) => {
+        toothScene = createToothScene(canvas, { reducedMotion });
+        onScroll(); // the loop is already running — sync it to where we are
+      })
+      .catch((err) => {
+        // No WebGL, or the chunk failed — the page works fine without it.
+        console.warn('3D tooth disabled:', err);
+        canvas.style.display = 'none';
+      });
+  } else {
+    canvas.style.display = 'none';
+  }
 }
 
 /* ---------- element refs ---------- */
