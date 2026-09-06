@@ -69,7 +69,7 @@ onScroll(); // set initial state
 
 /* (scroll-reveal is handled site-wide by src/reveal.js via layout.js) */
 
-/* ---------- Meet Dr. Punit — interactive 3D stage ----------
+/* ---------- Meet the dentists — interactive 3D stage ----------
    1) reveal (spring chips in) + count-up when the section scrolls in
    2) mouse-move parallax: tilt the scene, drift each layer by its depth */
 const meet = document.querySelector('.meet');

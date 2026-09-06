@@ -80,29 +80,61 @@ if (dpCard && !reduced && window.matchMedia('(hover: hover)').matches) {
   });
 }
 
-/* ---------- timeline: fill the centre line as it scrolls past ---------- */
-const timeline = document.getElementById('timeline');
-const fill = document.getElementById('tlFill');
-if (timeline && fill) {
+/* ---------- journey: pin the section and turn vertical scroll into
+     horizontal travel, so all five steps pass 3-at-a-time before the page
+     moves on. Disabled on narrow screens / reduced motion, where the track
+     is just a normal swipe list (see .timeline:not(.is-pinned) in the CSS). */
+const journey = document.getElementById('journey');
+const jTrack = document.getElementById('tlTrack');
+const jFill = document.getElementById('tlFill');
+
+if (journey && jTrack && jFill) {
+  let overflow = 0; // how far the track has to travel, in px
   let ticking = false;
-  const update = () => {
+
+  // Below ~1025px only two cards fit, which makes the pin ~2,200px long —
+  // more scroll than the section is worth. Swipe instead down there.
+  const canPin = () =>
+    !reduced && window.matchMedia('(min-width: 1025px)').matches;
+
+  function measure() {
+    if (!canPin()) {
+      journey.classList.remove('is-pinned');
+      journey.style.height = '';
+      jTrack.style.transform = '';
+      jFill.style.width = '0%';
+      overflow = 0;
+      return;
+    }
+    journey.classList.add('is-pinned');
+    // measure with the track un-translated, or scrollWidth is misread
+    jTrack.style.transform = 'none';
+    overflow = Math.max(0, jTrack.scrollWidth - jTrack.clientWidth);
+    // 1px of extra page height per 1px of horizontal travel
+    journey.style.height = window.innerHeight + overflow + 'px';
+    update();
+  }
+
+  function update() {
     ticking = false;
-    const r = timeline.getBoundingClientRect();
-    const vh = window.innerHeight;
-    // 0 when the timeline top hits ~55% down the viewport, 1 once it's scrolled through
-    const p = Math.max(0, Math.min(1, (vh * 0.55 - r.top) / r.height));
-    fill.style.height = (p * 100).toFixed(1) + '%';
+    if (!overflow) return;
+    const top = journey.getBoundingClientRect().top;
+    const total = journey.offsetHeight - window.innerHeight;
+    const p = total > 0 ? Math.min(Math.max(-top / total, 0), 1) : 0;
+    jTrack.style.transform = `translate3d(${(-p * overflow).toFixed(1)}px, 0, 0)`;
+    jFill.style.width = (p * 100).toFixed(1) + '%';
+  }
+
+  const onScroll = () => {
+    if (!ticking) {
+      ticking = true;
+      requestAnimationFrame(update);
+    }
   };
-  window.addEventListener(
-    'scroll',
-    () => {
-      if (!ticking) {
-        ticking = true;
-        requestAnimationFrame(update);
-      }
-    },
-    { passive: true }
-  );
-  window.addEventListener('resize', update);
-  update();
+
+  window.addEventListener('scroll', onScroll, { passive: true });
+  window.addEventListener('resize', measure);
+  // fonts landing later can change card heights / track width
+  if (document.fonts && document.fonts.ready) document.fonts.ready.then(measure);
+  measure();
 }
