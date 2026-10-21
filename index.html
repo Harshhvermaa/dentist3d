@@ -17,6 +17,12 @@
 
     <!-- Load styles render-blocking (before JS) so there's no flash of unstyled content -->
     <link rel="stylesheet" href="/src/style.css" />
+
+    <!-- Start the 3D tooth downloads with the HTML instead of after the JS
+         chunk — desktop only, phones never boot the 3D (see main.js) -->
+    <link rel="preload" href="/tooth-lite.glb" as="fetch" type="model/gltf-binary" crossorigin media="(min-width: 768px)" />
+    <link rel="preload" href="/draco/draco_wasm_wrapper.js" as="fetch" crossorigin media="(min-width: 768px)" />
+    <link rel="preload" href="/draco/draco_decoder.wasm" as="fetch" type="application/wasm" crossorigin media="(min-width: 768px)" />
   </head>
   <body data-page="home">
     <!-- Scroll progress bar -->

@@ -18,9 +18,16 @@ const PULP = 0xc0453f;
    If the file is missing/broken, the procedural tooth is used.
    Tweak these if the model looks too big/small or rotated:
    ============================================================ */
-// Draco-compressed build of tooth.glb (59 MB → 3 MB) so the site loads fast.
-// The uncompressed original is still in public/tooth.glb if you need it.
-const MODEL_URL = import.meta.env.BASE_URL + 'tooth-min.glb';
+// Simplified + Draco-compressed build of tooth.glb (59 MB → 0.9 MB) so the
+// hero shows quickly. tooth-min.glb (3 MB, full-detail mesh) and the
+// uncompressed public/tooth.glb are kept if you ever need to rebuild it.
+const MODEL_URL = import.meta.env.BASE_URL + 'tooth-lite.glb';
+// Self-hosted decoder (copied from three/examples/jsm/libs/draco/gltf) — no
+// third-party CDN in the critical path, and index.html can preload it.
+const DRACO_PATH = import.meta.env.BASE_URL + 'draco/';
+// If the model still hasn't arrived by now, show the procedural tooth rather
+// than an empty hero. The real model swaps in whenever it does land.
+const FALLBACK_AFTER_MS = 8000;
 const MODEL_TUNING = {
   targetSize: 2.7, // largest dimension is scaled to this many world units
   rotation: [0, -Math.PI / 1, 0], // radians [x, y, z] — turns the model's front toward the camera
@@ -287,7 +294,7 @@ export function createToothScene(canvas, { reducedMotion = false } = {}) {
     const loader = new GLTFLoader();
     // Support Draco-compressed downloads (decoder fetched only if needed).
     const draco = new DRACOLoader();
-    draco.setDecoderPath('https://www.gstatic.com/draco/versioned/decoders/1.5.6/');
+    draco.setDecoderPath(DRACO_PATH);
     loader.setDRACOLoader(draco);
 
     loader.load(
@@ -326,6 +333,7 @@ export function createToothScene(canvas, { reducedMotion = false } = {}) {
         if (!MODEL_TUNING.showPulp) disposeGroup(pulpGroup);
 
         tooth.add(wrap);
+        clearTimeout(fallbackTimer);
         console.info('[tooth] loaded model from', MODEL_URL);
       },
       undefined,
@@ -346,6 +354,10 @@ export function createToothScene(canvas, { reducedMotion = false } = {}) {
   // flashes on screen — it's only revealed if the model fails to load (above).
   proceduralGroup.visible = false;
   pulpGroup.visible = false;
+  const fallbackTimer = setTimeout(() => {
+    proceduralGroup.visible = true;
+    pulpGroup.visible = true;
+  }, FALLBACK_AFTER_MS);
   loadModel();
 
   /* ============================================================

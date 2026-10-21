@@ -119,10 +119,12 @@ if (dpCard && !reduced && window.matchMedia('(hover: hover)').matches) {
 const journey = document.getElementById('journey');
 const jTrack = document.getElementById('tlTrack');
 const jFill = document.getElementById('tlFill');
+const jStick = journey && journey.querySelector('.timeline__stick');
 
-if (journey && jTrack && jFill) {
+if (journey && jTrack && jFill && jStick) {
   let overflow = 0; // how far the track has to travel, in px
   let ticking = false;
+  let stickTop = 0; // where the pinned block sits in the viewport
 
   // Pin at every width — phones included — so the steps always pass
   // horizontally before the page moves on. Only reduced motion opts out.
@@ -132,6 +134,7 @@ if (journey && jTrack && jFill) {
     if (!canPin()) {
       journey.classList.remove('is-pinned');
       journey.style.height = '';
+      jStick.style.top = '';
       jTrack.style.transform = '';
       jFill.style.width = '0%';
       overflow = 0;
@@ -141,17 +144,21 @@ if (journey && jTrack && jFill) {
     // measure with the track un-translated, or scrollWidth is misread
     jTrack.style.transform = 'none';
     overflow = Math.max(0, jTrack.scrollWidth - jTrack.clientWidth);
+    // centre the block in the viewport, but never under the fixed nav
+    const navH = document.querySelector('.nav')?.offsetHeight || 0;
+    stickTop = Math.max(navH + 12, (window.innerHeight - jStick.offsetHeight) / 2);
+    jStick.style.top = stickTop + 'px';
     // 1px of extra page height per 1px of horizontal travel
-    journey.style.height = window.innerHeight + overflow + 'px';
+    journey.style.height = jStick.offsetHeight + overflow + 'px';
     update();
   }
 
   function update() {
     ticking = false;
     if (!overflow) return;
-    const top = journey.getBoundingClientRect().top;
-    const total = journey.offsetHeight - window.innerHeight;
-    const p = total > 0 ? Math.min(Math.max(-top / total, 0), 1) : 0;
+    // pinned for exactly `overflow` px of scroll, starting when it reaches stickTop
+    const scrolled = stickTop - journey.getBoundingClientRect().top;
+    const p = Math.min(Math.max(scrolled / overflow, 0), 1);
     jTrack.style.transform = `translate3d(${(-p * overflow).toFixed(1)}px, 0, 0)`;
     jFill.style.width = (p * 100).toFixed(1) + '%';
   }

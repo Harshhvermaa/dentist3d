@@ -15,7 +15,12 @@ const canvas = document.getElementById('tooth-canvas');
 let toothScene = null;
 
 if (canvas) {
-  if (window.matchMedia('(min-width: 768px)').matches) {
+  const desktop = window.matchMedia('(min-width: 768px)');
+  let booted = false;
+  const boot = () => {
+    if (booted || !desktop.matches) return;
+    booted = true;
+    canvas.style.display = '';
     import('./tooth.js')
       .then(({ createToothScene }) => {
         toothScene = createToothScene(canvas, { reducedMotion });
@@ -26,9 +31,11 @@ if (canvas) {
         console.warn('3D tooth disabled:', err);
         canvas.style.display = 'none';
       });
-  } else {
-    canvas.style.display = 'none';
-  }
+  };
+  if (desktop.matches) boot();
+  else canvas.style.display = 'none';
+  // opened in a narrow window (half-screen, devtools) and widened later
+  desktop.addEventListener('change', boot);
 }
 
 /* ---------- element refs ---------- */

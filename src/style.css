@@ -760,7 +760,6 @@ img {
   --tl-gap: 22px;
   --tl-per: 3;
   position: relative;
-  margin-top: 34px;
 }
 .timeline__stick {
   display: flex;
@@ -771,11 +770,12 @@ img {
 .timeline__stick .section__head {
   margin-bottom: 0;
 }
-/* JS switches this on once it knows the section can be pinned */
+/* JS switches this on once it knows the section can be pinned. The pin is
+   only as tall as its content (JS centres it via `top`), so no empty
+   viewport-height band is left above or below it. */
 .timeline.is-pinned .timeline__stick {
   position: sticky;
   top: 0;
-  height: 100vh;
 }
 
 .tl-track {
@@ -1112,7 +1112,7 @@ img {
   background: rgba(251, 250, 247, 0.55);
   -webkit-backdrop-filter: blur(18px);
   backdrop-filter: blur(18px);
-  padding: 110px var(--pad-x);
+  padding: 80px var(--pad-x);
 }
 /* first regular section rounds over the fading canvas */
 .meet {
@@ -2810,7 +2810,7 @@ img {
     padding: 130px 22px 90px;
   }
   .section {
-    padding: 76px 22px;
+    padding: 56px 22px;
   }
   /* keep long line-broken headings from feeling cramped */
   .display br,
