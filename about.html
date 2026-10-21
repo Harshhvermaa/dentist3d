@@ -32,7 +32,7 @@
               actually look forward to.
             </p>
             <div class="about-badges">
-              <span class="about-badge">🎓 Two MDS Specialists</span>
+              <span class="about-badge">🎓 Three Dental Surgeons</span>
               <span class="about-badge">🏅 ISO 9001:2008</span>
               <span class="about-badge">📍 Agra, U.P.</span>
             </div>
@@ -64,7 +64,7 @@
       <!-- ===== marquee ribbon ===== -->
       <div class="marquee" aria-hidden="true">
         <div class="marquee__track">
-          <span class="marquee__item">Two MDS Specialists</span>
+          <span class="marquee__item">Three Dental Surgeons</span>
           <span class="marquee__item">Painless Care</span>
           <span class="marquee__item">5000+ Smiles</span>
           <span class="marquee__item">ISO 9001:2008 Certified</span>
@@ -72,7 +72,7 @@
           <span class="marquee__item">3D Imaging</span>
           <span class="marquee__item">Whole-Tooth Care</span>
           <!-- duplicate for a seamless loop -->
-          <span class="marquee__item">Two MDS Specialists</span>
+          <span class="marquee__item">Three Dental Surgeons</span>
           <span class="marquee__item">Painless Care</span>
           <span class="marquee__item">5000+ Smiles</span>
           <span class="marquee__item">ISO 9001:2008 Certified</span>
@@ -82,10 +82,144 @@
         </div>
       </div>
 
+      <!-- ===== the team — one profile at a time (tabs wired in about.js;
+           without JS all three simply stack) ===== -->
+      <section class="section team" id="team">
+        <header class="section__head reveal">
+          <p class="eyebrow">MEET THE TEAM</p>
+          <h2 class="display display--md">Three surgeons, <em>one standard.</em></h2>
+        </header>
+
+        <div class="team-tabs reveal" role="tablist" aria-label="Our dental surgeons">
+            <button class="team-tab" type="button" role="tab" id="tab-rajesh" aria-controls="dr-rajesh" aria-selected="true">
+              <img class="team-tab__img" src="/rajesh.png" alt="" />
+              <span class="team-tab__txt"><b>Dr. Rajesh</b><small>Senior Dental Surgeon</small></span>
+            </button>
+            <button class="team-tab" type="button" role="tab" id="tab-punit" aria-controls="dr-punit" aria-selected="false">
+              <img class="team-tab__img" src="/punit2.png" alt="" />
+              <span class="team-tab__txt"><b>Dr. Punit</b><small>Endodontist · Implantologist</small></span>
+            </button>
+            <button class="team-tab" type="button" role="tab" id="tab-dipti" aria-controls="dr-dipti" aria-selected="false">
+              <img class="team-tab__img" src="/dipti01.png" alt="" />
+              <span class="team-tab__txt"><b>Dr. Dipti</b><small>Root Canal Specialist</small></span>
+            </button>
+        </div>
+
+        <div class="team-panels reveal" style="--i: 1">
+          <article class="doc" id="dr-rajesh" role="tabpanel" aria-labelledby="tab-rajesh">
+            <figure class="doc__photo">
+              <img src="/rajesh.png" alt="Dr. Rajesh Srivastava at his desk at SMDC, Agra" loading="lazy" style="object-position: center 20%" />
+              <figcaption class="doc__badge">Serving since 1986</figcaption>
+            </figure>
+            <div class="doc__copy">
+              <h2 class="doc__name">Dr. Rajesh <em>Srivastava</em></h2>
+              <p class="doc__role">Former President, IDA Agra (twice) · Central Council Member, IDA</p>
+              <p class="doc__bio">A pioneer of dentistry in Agra. He has led the Indian Dental Association Agra as President twice, served on the Central Council at the IDA head office, and has been awarded several times as one of the most active IDA members in U.P.</p>
+              <p class="doc__bio">In 1986 he single-handedly started the dental department at Saran Ashram Hospital, Dayalbagh, under the supreme guidance of Gracious Huzur Dr. M.B. Lal Sahab — and still heads it today, on an honorary basis.</p>
+              <div class="doc__creds">
+                <div class="doc-cred">
+                  <h3 class="doc-cred__title"><span aria-hidden="true">🏛️</span> Leadership</h3>
+                  <ul class="doc-cred__list">
+                    <li>President, IDA Agra — twice</li>
+                    <li>Central Council Member, IDA</li>
+                    <li>Awarded several times</li>
+                  </ul>
+                </div>
+                <div class="doc-cred">
+                  <h3 class="doc-cred__title"><span aria-hidden="true">🤝</span> Service</h3>
+                  <ul class="doc-cred__list">
+                    <li>Saran Ashram Hospital, Dayalbagh — since 1986</li>
+                    <li>In charge of dental dept. (honorary)</li>
+                  </ul>
+                </div>
+                <div class="doc-cred">
+                  <h3 class="doc-cred__title"><span aria-hidden="true">🌍</span> Patients from</h3>
+                  <ul class="doc-cred__list">
+                    <li>States across India</li>
+                    <li>USA, UK, Canada &amp; Spain</li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </article>
+          <article class="doc" id="dr-punit" role="tabpanel" aria-labelledby="tab-punit">
+            <figure class="doc__photo">
+              <img src="/punit2.png" alt="Dr. Punit Srivastava" loading="lazy" style="object-position: center 15%" />
+              <figcaption class="doc__badge">17 years · MDS</figcaption>
+            </figure>
+            <div class="doc__copy">
+              <h2 class="doc__name">Dr. Punit <em>Srivastava</em></h2>
+              <p class="doc__role">MDS · Endodontist · Implantologist · Director, SMDC</p>
+              <p class="doc__bio">BDS from Saraswati Dental College, Lucknow (2008) and MDS in Conservative Dentistry &amp; Endodontics from Divya Jyoti College, Modinagar (2014). With almost 17 years of clinical experience, he directs SMDC — one of the foremost dental clinics in Agra.</p>
+              <p class="doc__bio">His speciality is painless, single-sitting root canal treatment, with micro-endodontics and surgery under his own Labomed microscope. Carrying on the legacy, he also serves at Saran Ashram Hospital, Dayalbagh, on an honorary basis.</p>
+              <div class="doc__creds">
+                <div class="doc-cred">
+                  <h3 class="doc-cred__title"><span aria-hidden="true">🎓</span> Qualifications</h3>
+                  <ul class="doc-cred__list">
+                    <li>BDS — Saraswati Dental College, Lucknow (2008)</li>
+                    <li>MDS, Endodontics — Divya Jyoti College, Modinagar (2014)</li>
+                  </ul>
+                </div>
+                <div class="doc-cred">
+                  <h3 class="doc-cred__title"><span aria-hidden="true">🏅</span> Memberships</h3>
+                  <ul class="doc-cred__list">
+                    <li>Life Member — IACDE</li>
+                    <li>Silver Member — IDA</li>
+                    <li>Life Member — ISDR</li>
+                  </ul>
+                </div>
+                <div class="doc-cred">
+                  <h3 class="doc-cred__title"><span aria-hidden="true">🔬</span> Expertise</h3>
+                  <ul class="doc-cred__list">
+                    <li>Single-sitting &amp; microscopic RCT</li>
+                    <li>Implants &amp; implant prosthesis</li>
+                    <li>Full mouth rehabilitation</li>
+                    <li>Cosmetic smile enhancement</li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </article>
+          <article class="doc" id="dr-dipti" role="tabpanel" aria-labelledby="tab-dipti">
+            <figure class="doc__photo">
+              <img src="/dipti01.png" alt="Dr. Dipti Chadda Srivastava" loading="lazy" style="object-position: center 10%" />
+              <figcaption class="doc__badge">MDS · Endodontics</figcaption>
+            </figure>
+            <div class="doc__copy">
+              <h2 class="doc__name">Dr. Dipti Chadda <em>Srivastava</em></h2>
+              <p class="doc__role">MDS · Conservative Dentistry &amp; Endodontics · Root Canal Specialist</p>
+              <p class="doc__bio">Dr. Dipti Chadda Srivastava is SMDC's root canal specialist, with an MDS in Conservative Dentistry &amp; Endodontics.</p>
+              <p class="doc__bio">Patients know her for putting even the most anxious at ease — gentle, painless root canals, fillings and cleanings, with every step explained before it begins.</p>
+              <div class="doc__creds">
+                <div class="doc-cred">
+                  <h3 class="doc-cred__title"><span aria-hidden="true">🎓</span> Qualification</h3>
+                  <ul class="doc-cred__list">
+                    <li>MDS — Conservative Dentistry &amp; Endodontics</li>
+                  </ul>
+                </div>
+                <div class="doc-cred">
+                  <h3 class="doc-cred__title"><span aria-hidden="true">🦷</span> Expertise</h3>
+                  <ul class="doc-cred__list">
+                    <li>Painless root canal treatment</li>
+                    <li>Tooth-coloured fillings</li>
+                    <li>Scaling &amp; cleaning</li>
+                  </ul>
+                </div>
+                <div class="doc-cred">
+                  <h3 class="doc-cred__title"><span aria-hidden="true">💬</span> Patients say</h3>
+                  <ul class="doc-cred__list">
+                    <li>“She made me feel very comfortable and assured me it will be painless.” — Anukriti S., Google</li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </article>
+        </div>
+      </section>
 
       <!-- ===== journey timeline ===== -->
       <section class="section">
-        <!-- Pinned while the five steps slide past 3-at-a-time, then the page
+        <!-- Pinned while the steps slide past 3-at-a-time, then the page
              carries on. The heading sits inside the pin so it stays with the
              cards. JS drives it (about.js); falls back to a plain swipe track
              on small screens and for reduced motion. -->
@@ -97,9 +231,24 @@
             </header>
             <ol class="tl-track" id="tlTrack">
             <li class="tl-item">
+              <span class="tl-year">1986</span>
+              <h3 class="tl-title">Where it began</h3>
+              <p class="tl-desc">Dr. Rajesh Srivastava starts the dental department at Saran Ashram Hospital, Dayalbagh — single-handedly.</p>
+            </li>
+            <li class="tl-item">
+              <span class="tl-year">2008</span>
+              <h3 class="tl-title">BDS, Lucknow</h3>
+              <p class="tl-desc">Dr. Punit Srivastava graduates from Saraswati Dental College and Hospital, Lucknow.</p>
+            </li>
+            <li class="tl-item">
               <span class="tl-year">2009</span>
               <h3 class="tl-title">The first chair</h3>
               <p class="tl-desc">Dr. Punit opens SMDC in Agra with one belief — dentistry without fear.</p>
+            </li>
+            <li class="tl-item">
+              <span class="tl-year">2014</span>
+              <h3 class="tl-title">MDS &amp; serving Dayalbagh</h3>
+              <p class="tl-desc">MDS in Conservative Dentistry &amp; Endodontics from Divya Jyoti College, Modinagar — and, carrying on the legacy, honorary service at Saran Ashram Hospital, Dayalbagh.</p>
             </li>
             <li class="tl-item">
               <span class="tl-year">2014</span>
@@ -118,8 +267,8 @@
             </li>
             <li class="tl-item">
               <span class="tl-year">Today</span>
-              <h3 class="tl-title">5,000+ smiles later</h3>
-              <p class="tl-desc">Same calm rooms, honest pricing and whole-tooth care — just more of you.</p>
+              <h3 class="tl-title">Three dental surgeons, one roof</h3>
+              <p class="tl-desc">17 years on — painless single-sitting and microscopic root canals, implants and full mouth rehabilitation, with the same honest care.</p>
             </li>
           </ol>
           <div class="tl-progress" aria-hidden="true"><span class="tl-progress__fill" id="tlFill"></span></div>
@@ -138,83 +287,111 @@
         </div>
       </section>
 
-      <!-- ===== how dr. punit works ===== -->
-      <section class="section works">
-        <div class="wrap">
-          <header class="section__head reveal">
-            <p class="eyebrow">THE PROCESS · HONEST DENTISTRY</p>
-            <h2 class="display display--md">How we <em>work.</em></h2>
-            <p class="lede lede--center">
-              The same 4 steps for every patient. No hidden treatments, no unnecessary
-              procedures — just honest dentistry.
-            </p>
-          </header>
-          <ol class="steps">
-            <li class="step reveal" style="--i: 1">
-              <div class="step__marker"><span class="step__num">01</span></div>
-              <div class="step__card"><span class="step__icon">👂</span><h3 class="step__title">Listen First</h3><p class="step__tag">Pehle aapki baat, phir hamari.</p><p class="step__desc">Every visit starts with a conversation, not a chair.</p></div>
-            </li>
-            <li class="step reveal" style="--i: 2">
-              <div class="step__marker"><span class="step__num">02</span></div>
-              <div class="step__card"><span class="step__icon">🔬</span><h3 class="step__title">Scan &amp; Diagnose</h3><p class="step__tag">Andaza nahi, evidence.</p><p class="step__desc">3D scans and digital X-rays show us exactly what's happening.</p></div>
-            </li>
-            <li class="step reveal" style="--i: 3">
-              <div class="step__marker"><span class="step__num">03</span></div>
-              <div class="step__card"><span class="step__icon">💬</span><h3 class="step__title">Explain Honestly</h3><p class="step__tag">Jo zaroori hai wahi bolenge.</p><p class="step__desc">Every option and cost, explained in simple words.</p></div>
-            </li>
-            <li class="step reveal" style="--i: 4">
-              <div class="step__marker"><span class="step__num">04</span></div>
-              <div class="step__card"><span class="step__icon">🤍</span><h3 class="step__title">Treat Gently</h3><p class="step__tag">Painless, patient-paced care.</p><p class="step__desc">Modern anesthesia, gentle techniques, zero rush.</p></div>
-            </li>
-          </ol>
-        </div>
-      </section>
-
       <!-- ===== testimonials slider ===== -->
       <section class="section testi">
         <div class="wrap">
           <header class="section__head reveal">
             <p class="eyebrow">TESTIMONIALS</p>
             <h2 class="display display--md">What <em>Agra</em> says about us.</h2>
-            <p class="lede lede--center">Real patients, real smiles — from every corner of the city.</p>
+            <p class="lede lede--center">5-star reviews from our patients on Google — in their own words.</p>
           </header>
 
           <div class="testi-slider reveal">
             <div class="testi-track" id="testiTrack">
               <figure class="testi-card">
                 <div class="testi-stars" aria-label="5 out of 5 stars">★★★★★</div>
-                <blockquote class="testi-quote">Bilkul painless root canal — I was terrified, but Dr. Punit explained every single step. Easily the best dental experience I've had in Agra.</blockquote>
-                <figcaption class="testi-by"><span class="testi-avatar">RA</span><span class="testi-meta"><span class="testi-name">Ritu Agarwal</span><span class="testi-sub">Kamla Nagar · Root Canal</span></span></figcaption>
+                <blockquote class="testi-quote">I got my root canal treatment, scaling and cavity filling done by Dr. Dipti and I am really happy with the treatment. I was very scared at first that it might pain, but she made me feel very comfortable and assured me it will be painless…</blockquote>
+                <figcaption class="testi-by">
+                  <span class="testi-avatar">AS</span>
+                  <span class="testi-meta">
+                    <span class="testi-name">Anukriti Singh</span>
+                    <span class="testi-sub">Google review · Root Canal &amp; Fillings · Dr. Dipti</span>
+                  </span>
+                </figcaption>
               </figure>
+
               <figure class="testi-card">
                 <div class="testi-stars" aria-label="5 out of 5 stars">★★★★★</div>
-                <blockquote class="testi-quote">Got my daughter's braces done here. The team is so patient with kids, and the pricing was honest — zero upselling. Highly recommend.</blockquote>
-                <figcaption class="testi-by"><span class="testi-avatar">SC</span><span class="testi-meta"><span class="testi-name">Sunil Chauhan</span><span class="testi-sub">Dayalbagh · Orthodontics</span></span></figcaption>
+                <blockquote class="testi-quote">I recently underwent a single-sitting RCT followed by a crown at Srivastava Multispeciality Dental Clinic under the expert care of Dr. Punit Shrivastava, and the experience was exceptional!</blockquote>
+                <figcaption class="testi-by">
+                  <span class="testi-avatar">RC</span>
+                  <span class="testi-meta">
+                    <span class="testi-name">Roopak Chawdhary</span>
+                    <span class="testi-sub">Google review · Single-sitting RCT &amp; Crown · Dr. Punit</span>
+                  </span>
+                </figcaption>
               </figure>
+
               <figure class="testi-card">
                 <div class="testi-stars" aria-label="5 out of 5 stars">★★★★★</div>
-                <blockquote class="testi-quote">The 3D scan showed me exactly what was wrong. Same-day crown, no second visit, no pain. Worth every rupee — I've already sent my whole family.</blockquote>
-                <figcaption class="testi-by"><span class="testi-avatar">MV</span><span class="testi-meta"><span class="testi-name">Meena Verma</span><span class="testi-sub">Sikandra · Crown</span></span></figcaption>
+                <blockquote class="testi-quote">I had a great experience at this dental clinic. The staff was friendly and supportive. The dentist took time to explain the problem and the treatment options. The procedure was smooth and almost painless. The clinic is well-maintained and uses modern equipment. I'm very satisfied with the service and will definitely visit again.</blockquote>
+                <figcaption class="testi-by">
+                  <span class="testi-avatar">NY</span>
+                  <span class="testi-meta">
+                    <span class="testi-name">Nishant Yadav</span>
+                    <span class="testi-sub">Google review · General Care</span>
+                  </span>
+                </figcaption>
               </figure>
+
               <figure class="testi-card">
                 <div class="testi-stars" aria-label="5 out of 5 stars">★★★★★</div>
-                <blockquote class="testi-quote">My kids used to cry before every dental visit. Now they ask when we're going back! The pediatric team here is honestly magic.</blockquote>
-                <figcaption class="testi-by"><span class="testi-avatar">FK</span><span class="testi-meta"><span class="testi-name">Farah Khan</span><span class="testi-sub">Loha Mandi · Pediatric</span></span></figcaption>
+                <blockquote class="testi-quote">I had a great dental problem. Sir suggested me dental implant. Sir did all my implant very perfectly, so I'm very thankful to him.</blockquote>
+                <figcaption class="testi-by">
+                  <span class="testi-avatar">RR</span>
+                  <span class="testi-meta">
+                    <span class="testi-name">Reena Raghav</span>
+                    <span class="testi-sub">Google review · Dental Implants</span>
+                  </span>
+                </figcaption>
               </figure>
+
               <figure class="testi-card">
                 <div class="testi-stars" aria-label="5 out of 5 stars">★★★★★</div>
-                <blockquote class="testi-quote">Cracked a tooth on a Sunday and they saw me within the hour. Calm, quick, and no gouging on the bill. Lifesavers.</blockquote>
-                <figcaption class="testi-by"><span class="testi-avatar">DS</span><span class="testi-meta"><span class="testi-name">Deepak Sharma</span><span class="testi-sub">Shahganj · Emergency Care</span></span></figcaption>
+                <blockquote class="testi-quote">I recently had an RCA and crown procedure done by Dr Punit, and I couldn't be more satisfied with the experience. The entire process was incredibly smooth, and most importantly, pain-free.</blockquote>
+                <figcaption class="testi-by">
+                  <span class="testi-avatar">NG</span>
+                  <span class="testi-meta">
+                    <span class="testi-name">Neha Gupta</span>
+                    <span class="testi-sub">Google review · Root Canal &amp; Crown · Dr. Punit</span>
+                  </span>
+                </figcaption>
               </figure>
+
               <figure class="testi-card">
                 <div class="testi-stars" aria-label="5 out of 5 stars">★★★★★</div>
-                <blockquote class="testi-quote">Whitening that actually looks natural — my wedding photos came out perfect. Gentle, professional, and never once rushed.</blockquote>
-                <figcaption class="testi-by"><span class="testi-avatar">AM</span><span class="testi-meta"><span class="testi-name">Anjali Mittal</span><span class="testi-sub">Civil Lines · Whitening</span></span></figcaption>
+                <blockquote class="testi-quote">I'm genuinely impressed by the exceptional care I received during my dental implant procedure. From the initial consultation to the final implant, the entire process was handled with precision and attention to detail.</blockquote>
+                <figcaption class="testi-by">
+                  <span class="testi-avatar">AG</span>
+                  <span class="testi-meta">
+                    <span class="testi-name">Ashish Goyal</span>
+                    <span class="testi-sub">Google review · Dental Implants</span>
+                  </span>
+                </figcaption>
               </figure>
+
               <figure class="testi-card">
                 <div class="testi-stars" aria-label="5 out of 5 stars">★★★★★</div>
-                <blockquote class="testi-quote">Been coming here for six years now. They remember my name, my history, everything. It genuinely feels like family.</blockquote>
-                <figcaption class="testi-by"><span class="testi-avatar">RB</span><span class="testi-meta"><span class="testi-name">Rakesh Bansal</span><span class="testi-sub">Balkeshwar · General Care</span></span></figcaption>
+                <blockquote class="testi-quote">Thanks for a careful and painless treatment given to my dad. He feels comfortable while eating and drinking even after the treatments of root canal and teeth caps. Amiable staff and great doctors. Being 80 plus, doctors took care and performed the treatment as per his pace to cope up. Thanks.</blockquote>
+                <figcaption class="testi-by">
+                  <span class="testi-avatar">R</span>
+                  <span class="testi-meta">
+                    <span class="testi-name">Rachna</span>
+                    <span class="testi-sub">Google review · Root Canal &amp; Caps · Senior Care</span>
+                  </span>
+                </figcaption>
+              </figure>
+
+              <figure class="testi-card">
+                <div class="testi-stars" aria-label="5 out of 5 stars">★★★★★</div>
+                <blockquote class="testi-quote">I am in good hands to address all my dental issues in this most esteemed and caring dental facility! I find good care which amalgamates professionalism and the most important thing, ETHICS, all together. In short, very reliable…</blockquote>
+                <figcaption class="testi-by">
+                  <span class="testi-avatar">NS</span>
+                  <span class="testi-meta">
+                    <span class="testi-name">Neelam Sharma</span>
+                    <span class="testi-sub">Google review · General Care</span>
+                  </span>
+                </figcaption>
               </figure>
             </div>
 

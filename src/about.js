@@ -6,6 +6,38 @@ const reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
 initTestiSlider(reduced);
 
+/* ---------- the team — one surgeon's profile at a time ----------
+   Without JS every panel stays visible and they simply stack. */
+const teamTabs = Array.from(document.querySelectorAll('.team-tab'));
+if (teamTabs.length) {
+  const panelFor = (tab) => document.getElementById(tab.getAttribute('aria-controls'));
+
+  function selectTab(tab, focus) {
+    teamTabs.forEach((t) => {
+      const on = t === tab;
+      t.setAttribute('aria-selected', on);
+      t.tabIndex = on ? 0 : -1;
+      const panel = panelFor(t);
+      panel.hidden = !on;
+      panel.classList.toggle('is-entering', on && !reduced);
+    });
+    if (focus) tab.focus();
+  }
+
+  teamTabs.forEach((tab, i) => {
+    tab.addEventListener('click', () => selectTab(tab));
+    // arrow keys move between tabs (standard tablist pattern)
+    tab.addEventListener('keydown', (e) => {
+      const step = e.key === 'ArrowRight' ? 1 : e.key === 'ArrowLeft' ? -1 : 0;
+      if (!step) return;
+      e.preventDefault();
+      selectTab(teamTabs[(i + step + teamTabs.length) % teamTabs.length], true);
+    });
+  });
+
+  selectTab(teamTabs.find((t) => t.getAttribute('aria-selected') === 'true') || teamTabs[0]);
+}
+
 /* ---------- count-up numbers ([data-to]) ---------- */
 function runCount(el) {
   const to = parseInt(el.dataset.to, 10) || 0;
@@ -92,7 +124,7 @@ if (journey && jTrack && jFill) {
   let overflow = 0; // how far the track has to travel, in px
   let ticking = false;
 
-  // Pin at every width — phones included — so the five steps always pass
+  // Pin at every width — phones included — so the steps always pass
   // horizontally before the page moves on. Only reduced motion opts out.
   const canPin = () => !reduced;
 

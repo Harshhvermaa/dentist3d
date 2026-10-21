@@ -752,7 +752,7 @@ img {
    ------------------------------------------------------------
    Three cards are visible at a time. While the section is pinned,
    vertical scroll is translated into horizontal travel by
-   about.js; once the five steps have passed, the page resumes.
+   about.js; once the steps have passed, the page resumes.
    Small screens and reduced-motion get a plain swipe track and
    no pinning at all.
    ============================================================ */
@@ -1845,6 +1845,223 @@ img {
   background: var(--mint-deep);
   color: #fff;
   transform: translateX(4px);
+}
+
+/* home shows 6 cards — this links through to the full list */
+.svc-more {
+  text-align: center;
+  margin-top: 44px;
+}
+
+/* 10 cards in a 3-up grid leave one alone on the last row — centre it */
+@media (min-width: 1025px) {
+  .svc-grid > .svc-card:last-child:nth-child(3n + 1) {
+    grid-column: 2;
+  }
+}
+
+/* ============================================================
+   About — the team (tabbed: one surgeon's profile at a time)
+   ============================================================ */
+.team-tabs {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin: -24px 0 32px;
+}
+.team-tab {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  padding: 7px 20px 7px 7px;
+  border-radius: 100px;
+  border: 1px solid var(--glass-border);
+  background: var(--glass-strong);
+  -webkit-backdrop-filter: blur(12px);
+  backdrop-filter: blur(12px);
+  box-shadow: var(--shadow-sm);
+  font: inherit;
+  color: var(--ink);
+  text-align: left;
+  cursor: pointer;
+  transition: background 0.3s ease, color 0.3s ease, box-shadow 0.3s ease,
+    transform 0.3s cubic-bezier(0.2, 0.7, 0.2, 1);
+}
+.team-tab:hover {
+  transform: translateY(-2px);
+}
+.team-tab[aria-selected="true"] {
+  background: var(--mint-deep);
+  border-color: var(--mint-deep);
+  color: #fff;
+  box-shadow: 0 16px 30px -16px rgba(35, 80, 158, 0.6);
+}
+.team-tab:focus-visible {
+  outline: 2px solid var(--blue-deep);
+  outline-offset: 3px;
+}
+.team-tab__img {
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  object-fit: cover;
+  object-position: center 12%;
+  background: linear-gradient(160deg, #e6effb, #bcd2f0);
+}
+.team-tab__txt b {
+  display: block;
+  font-family: var(--font-serif);
+  font-weight: 600;
+  font-size: 1rem;
+}
+.team-tab__txt small {
+  font-size: 0.78rem;
+  opacity: 0.75;
+}
+
+/* one panel = photo + copy; creds sit inside the copy column */
+.team-panels .doc + .doc {
+  margin-top: 48px; /* only when JS hasn't run and all three stack */
+}
+.doc {
+  display: grid;
+  grid-template-columns: 320px 1fr;
+  gap: clamp(28px, 4vw, 56px);
+  align-items: start;
+  padding: clamp(20px, 2.5vw, 28px);
+  border-radius: var(--radius-lg);
+  background: var(--glass-strong);
+  -webkit-backdrop-filter: blur(16px);
+  backdrop-filter: blur(16px);
+  border: 1px solid var(--glass-border);
+  box-shadow: var(--shadow-md);
+}
+.doc[hidden] {
+  display: none;
+}
+.doc.is-entering {
+  animation: doc-in 0.45s cubic-bezier(0.2, 0.7, 0.2, 1);
+}
+@keyframes doc-in {
+  from {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+}
+.doc__photo {
+  position: relative;
+  margin: 0;
+  border-radius: 24px;
+  overflow: hidden;
+  aspect-ratio: 4 / 5;
+  background: linear-gradient(160deg, #e6effb 0%, #cddff5 55%, #bcd2f0 100%);
+}
+.doc__photo img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.doc__badge {
+  position: absolute;
+  left: 12px;
+  bottom: 12px;
+  padding: 6px 12px;
+  border-radius: 100px;
+  font-size: 0.8rem;
+  font-weight: 700;
+  color: var(--mint-deep);
+  background: rgba(255, 255, 255, 0.88);
+  -webkit-backdrop-filter: blur(8px);
+  backdrop-filter: blur(8px);
+  box-shadow: var(--shadow-sm);
+}
+.doc__name {
+  font-family: var(--font-serif);
+  font-weight: 600;
+  font-size: clamp(1.7rem, 3vw, 2.3rem);
+  letter-spacing: -0.02em;
+  line-height: 1.1;
+  margin: 6px 0 6px;
+}
+.doc__name em {
+  font-style: italic;
+  font-weight: 500;
+  color: var(--mint-deep);
+}
+.doc__role {
+  margin: 0 0 16px;
+  color: var(--mint-deep);
+  font-weight: 600;
+  font-size: 0.92rem;
+}
+.doc__bio {
+  margin: 0 0 10px;
+  color: var(--ink-soft);
+  font-size: 0.97rem;
+  max-width: 68ch;
+}
+.doc__creds {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 12px;
+  margin-top: 20px;
+}
+.doc-cred {
+  padding: 14px 16px;
+  border-radius: 16px;
+  background: rgba(238, 244, 253, 0.7);
+  border: 1px solid rgba(143, 180, 234, 0.35);
+}
+.doc-cred__title {
+  font-family: var(--font-serif);
+  font-weight: 600;
+  font-size: 0.98rem;
+  margin: 0 0 8px;
+}
+.doc-cred__list {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  color: var(--ink-soft);
+  font-size: 0.84rem;
+  line-height: 1.45;
+}
+.doc-cred__list li + li {
+  margin-top: 5px;
+}
+@media (max-width: 1024px) {
+  .doc {
+    grid-template-columns: 240px 1fr;
+  }
+  .doc__creds {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+@media (max-width: 720px) {
+  .team-tabs {
+    flex-wrap: nowrap;
+    justify-content: flex-start;
+    overflow-x: auto;
+    scrollbar-width: none;
+    margin: -12px 0 20px;
+    padding: 4px 2px 10px;
+  }
+  .team-tab {
+    flex: none;
+  }
+  .doc {
+    grid-template-columns: 1fr;
+    gap: 18px;
+  }
+  /* landscape crop on phones keeps the photo from eating the screen */
+  .doc__photo {
+    aspect-ratio: 4 / 3;
+  }
+  .doc__creds {
+    grid-template-columns: 1fr;
+    gap: 10px;
+  }
 }
 
 /* ============================================================
